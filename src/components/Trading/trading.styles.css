@@ -9,7 +9,7 @@
   grid-gap: 10px;
   color: #9ca5a9;
   font-size: 1.3rem;
-  border-bottom: 1px solid #9ca5a9;
+
   padding: 20px 20px 20px 15px;
   width: 100%;
 }
@@ -33,7 +33,7 @@
 .status {
   color: #ddd;
   white-space: nowrap;
-  font-size: 1rem;
+  font-size: 12px;
 }
 
 .trading-message {

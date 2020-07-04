@@ -49,6 +49,13 @@
   height: 48px;
 }
 
+.seller-image {
+  border-radius: 100%;
+  grid-row: span 2;
+  width: 48px;
+  height: 48px;
+}
+
 .message-row.other-message > .message-content {
   grid-template-columns: 48px 1fr;
   grid-column-gap: 15px;

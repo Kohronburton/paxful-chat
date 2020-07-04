@@ -12,9 +12,9 @@ const ChartHeader: React.FC = () => {
           </Button>
         </div>
 
-        <div className="text-center selected">
-          Amazon Gift Card <br></br>{" "}
-          <span>
+        <div className="text-center ">
+          <h6>Amazon Gift Card</h6>
+          <span className="selected">
             Chanaar <span className="rating-postive">+37</span> /{" "}
             <span className="rating-neg">-1</span>{" "}
           </span>

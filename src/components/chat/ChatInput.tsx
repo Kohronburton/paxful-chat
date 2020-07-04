@@ -13,7 +13,10 @@ const ChatInput = () => {
           className="mr-4"
         />
         <Button color="success" size="sm" className="mr-2">
-          SEND
+          Buyer
+        </Button>
+        <Button color="primary" size="sm" className="mr-2">
+          Seller
         </Button>
       </Form>
     </div>

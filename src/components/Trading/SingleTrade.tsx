@@ -4,7 +4,7 @@ import "./trading.styles.css";
 
 const SingleTrade: React.FC = () => {
   return (
-    <div className="trading">
+    <div className="trading border-bottom">
       <img src={profileImg} alt="Profile" />
       <div className="title-text">
         <span className="dot mr-2"></span>Daryl is buying
