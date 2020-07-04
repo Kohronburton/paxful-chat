@@ -1,0 +1,63 @@
+.trading-container {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.trading {
+  display: grid;
+  grid-template-columns: 40px 1fr max-content;
+  grid-gap: 10px;
+  color: #9ca5a9;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #9ca5a9;
+  padding: 20px 20px 20px 15px;
+  width: 100%;
+}
+
+.trading > img {
+  grid-row: span 2;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+
+.title-text {
+  font-weight: 300;
+  padding-left: 5px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.status {
+  color: #ddd;
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+.trading-message {
+  grid-column: span 2;
+  padding-left: 5px;
+  color: #38374d;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.paid {
+  color: #62ba96;
+}
+
+.active-trade {
+  background-color: #f5f7fa;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #62ba96;
+  border-radius: 50%;
+  display: inline-block;
+}

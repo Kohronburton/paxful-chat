@@ -1,0 +1,22 @@
+.nav-text-color {
+  color: #9ca5a9;
+  /* */
+  /*  */
+}
+
+.nav-selector {
+  box-shadow: 0 4px 6px -6px black;
+}
+
+.active-tab {
+  background-color: #f2f2f9;
+  color: #424242;
+  border-left: 0.1px solid #9ca5a9;
+  border-right: 0.1px solid #9ca5a9;
+}
+
+@media (max-width: 694px) {
+  .nav-selector {
+    display: none;
+  }
+}
