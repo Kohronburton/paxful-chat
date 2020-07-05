@@ -1,62 +1,50 @@
 import React from "react";
-import BuyerImg from "../../images/profiles/douglas.png";
 import Seller from "../../images/profiles/kim.jpeg";
 import "./chat.styles.css";
+import { ChatHistoryI } from "../../types";
+import moment from "moment";
 
-const Message: React.FC = () => {
+interface Props {
+  buyerImage: string;
+  chatMessage: ChatHistoryI[];
+}
+
+const Message: React.FC<Props> = ({ chatMessage, buyerImage }) => {
   return (
     <>
-      <div className="mt-3 message-row other-message">
-        <div className="message-content">
-          <img src={BuyerImg} alt="Buyer" />
-          <div className="message-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde fugit
-            soluta similique possimus
-          </div>
-          <div className="message-time">Apr 15</div>
-        </div>
-      </div>
-      {/* Seller message */}
-      <div className="d-flex justify-content-end">
-        <div className="mt-3 message-row you-message">
-          <div className="message-content">
-            <div className="message-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
-              fugit soluta similique possimus
+      {chatMessage.map((chat, index) => {
+        if (chat.isBuyer) {
+          return (
+            <div className="mt-3 message-row other-message" key={index}>
+              <div className="message-content">
+                <img src={buyerImage} alt="Buyer" />
+                <div className="message-text">{chat.chatMessage}</div>
+                <div className="message-time">
+                  {moment(chat.date).format("MMM Do")}
+                </div>
+              </div>
             </div>
+          );
+        } else {
+          return (
+            <div className="d-flex justify-content-end" key={index}>
+              <div className="mt-3 message-row you-message">
+                <div className="message-content">
+                  <div className="message-text">{chat.chatMessage}</div>
 
-            <div className="message-time">Apr 15</div>
-          </div>
-        </div>
-        <div className="ml-2 mt-3">
-          <img src={Seller} alt="Buyer" className="seller-image" />
-        </div>
-      </div>
-
-      <div className="mt-3 message-row other-message">
-        <div className="message-content">
-          <img src={BuyerImg} alt="Buyer" />
-          <div className="message-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </div>
-          <div className="message-time">Apr 15</div>
-        </div>
-      </div>
-      {/* Seller message */}
-      <div className="d-flex justify-content-end">
-        <div className="mt-3 message-row you-message">
-          <div className="message-content">
-            <div className="message-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <div className="message-time">
+                    {" "}
+                    {moment(chat.date).format("MMM Do")}
+                  </div>
+                </div>
+              </div>
+              <div className="ml-2 mt-3">
+                <img src={Seller} alt="Buyer" className="seller-image" />
+              </div>
             </div>
-
-            <div className="message-time">Apr 15</div>
-          </div>
-        </div>
-        <div className="ml-2 mt-3">
-          <img src={Seller} alt="Buyer" className="seller-image" />
-        </div>
-      </div>
+          );
+        }
+      })}
     </>
   );
 };

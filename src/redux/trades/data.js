@@ -1,0 +1,67 @@
+export const tradeData = [
+  {
+    id: 1,
+    buyerName: "John Deo",
+    paymentMethod: "Amazon Gift Card",
+    tradingStatus: "PAID",
+    postiveRating: 37,
+    negativeRating: -2,
+    numberOfTrades: 4,
+    tradeHash: "E345tf",
+    startedTrading: "2020-07-02",
+    AmtUSD: 25.0,
+    AmtBTC: 0.002345,
+    image: "/profiles/douglas.png",
+    isNewMessage: true,
+    chatHistory: [
+      {
+        isBuyer: true,
+        isSeller: false,
+        chatMessage: "Hi, How much is your rate ?",
+        date: "2020-07-02",
+      },
+      {
+        isBuyer: false,
+        isSeller: true,
+        chatMessage: "Hello, 30 USD for 2 bitcoins.",
+        date: "2020-07-03",
+      },
+      {
+        isBuyer: true,
+        isSeller: false,
+        chatMessage: "Okay, sounds good",
+        date: "2020-07-04",
+      },
+    ],
+  },
+  {
+    id: 2,
+    buyerName: "Mark John",
+    paymentMethod: "Paxful coins",
+    tradingStatus: "NOT PAID",
+    postiveRating: 25,
+    negativeRating: -1,
+    numberOfTrades: 5,
+    tradeHash: "t3456f",
+    startedTrading: "2020-07-04",
+    AmtUSD: 19.0,
+    AmtBTC: 0.0026757,
+    image: "/profiles/john.jpeg",
+    isNewMessage: false,
+    chatHistory: [
+      {
+        isBuyer: true,
+        isSeller: false,
+        chatMessage:
+          "Do you have paxful wallet ?  so i can transfer to your wallet",
+        date: "2020-07-04",
+      },
+      {
+        isBuyer: false,
+        isSeller: true,
+        chatMessage: "Yes i do, you can send to @test.username",
+        date: "2020-07-05",
+      },
+    ],
+  },
+];

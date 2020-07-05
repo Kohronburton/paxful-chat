@@ -3,6 +3,10 @@
   overflow-x: hidden;
 }
 
+.current-select {
+  background-color: #f2f2f9;
+}
+
 .trading {
   display: grid;
   grid-template-columns: 40px 1fr max-content;
@@ -50,14 +54,26 @@
   color: #62ba96;
 }
 
+.not-paid {
+  color: #9ca5a9;
+}
+
 .active-trade {
   background-color: #f5f7fa;
 }
 
-.dot {
+.dot-new {
   height: 10px;
   width: 10px;
   background-color: #62ba96;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-read {
+  height: 10px;
+  width: 10px;
+  background-color: #9ca5a9;
   border-radius: 50%;
   display: inline-block;
 }

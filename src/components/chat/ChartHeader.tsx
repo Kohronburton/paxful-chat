@@ -2,7 +2,19 @@ import React from "react";
 import { Button } from "reactstrap";
 import { FaTrashAlt } from "react-icons/fa";
 
-const ChartHeader: React.FC = () => {
+interface Props {
+  paymentMethod: string;
+  postiveRating: number;
+  negativeRating: number;
+  buyerName: string;
+}
+
+const ChartHeader: React.FC<Props> = ({
+  paymentMethod,
+  buyerName,
+  negativeRating,
+  postiveRating,
+}) => {
   return (
     <div className="mt-3">
       <div className="d-flex">
@@ -13,10 +25,10 @@ const ChartHeader: React.FC = () => {
         </div>
 
         <div className="text-center ">
-          <h6>Amazon Gift Card</h6>
+          <h6>{paymentMethod}</h6>
           <span className="selected">
-            Chanaar <span className="rating-postive">+37</span> /{" "}
-            <span className="rating-neg">-1</span>{" "}
+            {buyerName} <span className="rating-postive">+{postiveRating}</span>{" "}
+            / <span className="rating-neg">{negativeRating}</span>{" "}
           </span>
         </div>
       </div>
