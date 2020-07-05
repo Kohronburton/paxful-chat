@@ -1,5 +1,4 @@
 import React from "react";
-import Seller from "../../images/profiles/kim.jpeg";
 import "./chat.styles.css";
 import { ChatHistoryI } from "../../types";
 import moment from "moment";
@@ -27,19 +26,14 @@ const Message: React.FC<Props> = ({ chatMessage, buyerImage }) => {
           );
         } else {
           return (
-            <div className="d-flex justify-content-end" key={index}>
-              <div className="mt-3 message-row you-message">
-                <div className="message-content">
-                  <div className="message-text">{chat.chatMessage}</div>
+            <div className="mt-3 mr-2 message-row you-message" key={index}>
+              <div className="message-content">
+                <div className="message-text">{chat.chatMessage}</div>
 
-                  <div className="message-time">
-                    {" "}
-                    {moment(chat.date).format("MMM Do")}
-                  </div>
+                <div className="message-time">
+                  {" "}
+                  {moment(chat.date).format("MMM Do")}
                 </div>
-              </div>
-              <div className="ml-2 mt-3">
-                <img src={Seller} alt="Buyer" className="seller-image" />
               </div>
             </div>
           );

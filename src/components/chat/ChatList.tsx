@@ -13,6 +13,8 @@ interface Props {
   buyerName: string;
   buyerImage: string;
   chatMessage: ChatHistoryI[];
+  openModal: () => void;
+  handleMessageSend: (sender: string, chatMessage: string) => void;
 }
 
 const ChatList: React.FC<Props> = ({
@@ -22,6 +24,8 @@ const ChatList: React.FC<Props> = ({
   postiveRating,
   buyerName,
   negativeRating,
+  openModal,
+  handleMessageSend,
 }) => {
   return (
     <Col md="5" className="chat-container mt-1">
@@ -30,12 +34,13 @@ const ChatList: React.FC<Props> = ({
         buyerName={buyerName}
         postiveRating={postiveRating}
         negativeRating={negativeRating}
+        openModal={openModal}
       />
       <div className="message-container">
         <Message buyerImage={buyerImage} chatMessage={chatMessage} />
       </div>
-      {/* <Message /> */}
-      <ChatInput />
+
+      <ChatInput handleMessageSend={handleMessageSend} />
     </Col>
   );
 };

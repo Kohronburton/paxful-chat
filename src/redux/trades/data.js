@@ -64,4 +64,40 @@ export const tradeData = [
       },
     ],
   },
+  {
+    id: 3,
+    buyerName: "Mary Lass",
+    paymentMethod: "PayPal",
+    tradingStatus: "PAID",
+    postiveRating: 30,
+    negativeRating: -2,
+    numberOfTrades: 3,
+    tradeHash: "TRFDER",
+    startedTrading: "2020-06-30",
+    AmtUSD: 30.0,
+    AmtBTC: 0.0026757,
+    image: "/profiles/kim.jpeg",
+    isNewMessage: true,
+    chatHistory: [
+      {
+        isBuyer: true,
+        isSeller: false,
+        chatMessage: "Hey, i have new bitcoins for sell",
+        date: "2020-06-30",
+      },
+
+      {
+        isBuyer: false,
+        isSeller: true,
+        chatMessage: "Okay what amount are you offering ?",
+        date: "2020-07-01",
+      },
+      {
+        isBuyer: true,
+        isSeller: false,
+        chatMessage: "30 USD",
+        date: "2020-07-02",
+      },
+    ],
+  },
 ];

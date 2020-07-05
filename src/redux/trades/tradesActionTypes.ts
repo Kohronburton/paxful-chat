@@ -3,7 +3,7 @@ export const DELETE_TRADE = "DELETE_TRADE";
 export const SET_MESSAGE_TO_READ = "SET_MESSAGE_TO_READ";
 
 export interface ChatMessageI {
-  index: number;
+  id: number;
   chatMessage: string;
   isBuyer: boolean;
   isSeller: boolean;

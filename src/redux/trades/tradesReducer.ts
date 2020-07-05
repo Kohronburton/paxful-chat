@@ -21,22 +21,29 @@ const tradesReducer = (
 ): InitialStateI => {
   switch (action.type) {
     case SEND_MESSAGE:
-      const newData = [...state.data];
       const {
-        payload: { index, isBuyer, isSeller, date, chatMessage },
+        payload: { id, isBuyer, isSeller, date, chatMessage },
       } = action;
-      newData[index].chatHistory.push({
-        isBuyer: isBuyer,
-        isSeller: isSeller,
-        chatMessage: chatMessage,
-        date: date,
-      });
-      isBuyer
-        ? (newData[index].isNewMessage = true)
-        : (newData[index].isNewMessage = false);
+
       return {
         ...state,
-        data: newData,
+        data: state.data.map((trade) =>
+          trade.id === id
+            ? {
+                ...trade,
+                chatHistory: [
+                  ...trade.chatHistory,
+                  {
+                    isBuyer,
+                    isSeller,
+                    date,
+                    chatMessage,
+                  },
+                ],
+                isNewMessage: isBuyer ? true : false,
+              }
+            : trade
+        ),
       };
     case DELETE_TRADE:
       return {

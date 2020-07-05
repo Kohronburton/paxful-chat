@@ -43,6 +43,13 @@ const SingleTrade: React.FC<Props> = ({
     setSelected(tradeId);
   }, [tradeId]);
 
+  useEffect(() => {
+    if (isNewMessage && selected === id) {
+      readMessage(index);
+    }
+    // eslint-disable-next-line
+  }, []);
+
   const notificationClass = classNames("mr-2", {
     "dot-new": isNewMessage,
     "dot-read": !isNewMessage,
@@ -62,6 +69,7 @@ const SingleTrade: React.FC<Props> = ({
     if (isNewMessage) {
       readMessage(index);
     }
+    localStorage.setItem("currentRoute", id.toString());
   };
 
   return (

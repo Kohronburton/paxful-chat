@@ -1,16 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { Row } from "reactstrap";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootStore } from "../../redux/store";
 import NavSelector from "../navselector/NavSelector";
 import TradingList from "../Trading/TradingList";
 import ChatList from "../chat/ChatList";
 import Overview from "../overview/Overview";
 import { TradesDataI } from "../../types";
+import {
+  ChatMessageI,
+  TradesDispatchTypes,
+} from "../../redux/trades/tradesActionTypes";
+import {
+  createChatMessage,
+  deleteTrade,
+} from "../../redux/trades/tradesActions";
+import moment from "moment";
+import ConfirmDialog from "../common/ConfirmDialog";
 
 const Trades: React.FC<{ tradeId: number }> = ({ tradeId }) => {
   const [currentId, setCurrentId] = useState(tradeId);
+  const [listenToChange, setListenToChange] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTrade, setSelectedTrade] = useState<TradesDataI | null>(null);
+
+  const dispatch = useDispatch();
+
+  const sendMessage = (message: ChatMessageI): TradesDispatchTypes =>
+    dispatch(createChatMessage(message));
+
+  const removeTrade = (id: number): TradesDispatchTypes =>
+    dispatch(deleteTrade(id));
 
   const { data } = useSelector((state: RootStore) => state.trades);
 
@@ -20,14 +40,54 @@ const Trades: React.FC<{ tradeId: number }> = ({ tradeId }) => {
       setSelectedTrade(selected);
     }
     // eslint-disable-next-line
-  }, [currentId]);
+  }, [currentId, listenToChange]);
 
   const changeSelectedTrade = (id: number): void => {
     setCurrentId(id);
   };
 
-  console.log(selectedTrade);
-  console.log(currentId);
+  const openModal = (): void => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = (): void => {
+    setIsModalOpen(false);
+  };
+
+  const handleDelete = (): void => {
+    removeTrade(currentId);
+    closeModal();
+    setSelectedTrade(null);
+    setListenToChange(!listenToChange);
+  };
+
+  const handleMessageSend = (sender: string, chatMessage: string): void => {
+    if (!chatMessage) return;
+
+    if (sender === "SELLER") {
+      const message: ChatMessageI = {
+        id: currentId,
+        isBuyer: false,
+        isSeller: true,
+        chatMessage,
+        date: moment(Date.now()).format("YYYY-MM-DD"),
+      };
+      sendMessage(message);
+      setListenToChange(!listenToChange);
+    }
+
+    if (sender === "BUYER") {
+      const message: ChatMessageI = {
+        id: currentId,
+        isBuyer: true,
+        isSeller: false,
+        chatMessage,
+        date: moment(Date.now()).format("YYYY-MM-DD"),
+      };
+      sendMessage(message);
+      setListenToChange(!listenToChange);
+    }
+  };
 
   return (
     <>
@@ -45,6 +105,8 @@ const Trades: React.FC<{ tradeId: number }> = ({ tradeId }) => {
             buyerImage={selectedTrade.image}
             chatMessage={selectedTrade.chatHistory}
             buyerName={selectedTrade.buyerName}
+            handleMessageSend={handleMessageSend}
+            openModal={openModal}
           />
         )}
         {selectedTrade && (
@@ -62,6 +124,13 @@ const Trades: React.FC<{ tradeId: number }> = ({ tradeId }) => {
           />
         )}
       </Row>
+      <ConfirmDialog
+        isOpen={isModalOpen}
+        title="Confirm Message"
+        message="Are you sure you want to delete this record?"
+        toggle={closeModal}
+        yesAction={handleDelete}
+      />
     </>
   );
 };

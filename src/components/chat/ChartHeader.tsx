@@ -7,6 +7,7 @@ interface Props {
   postiveRating: number;
   negativeRating: number;
   buyerName: string;
+  openModal: () => void;
 }
 
 const ChartHeader: React.FC<Props> = ({
@@ -14,12 +15,13 @@ const ChartHeader: React.FC<Props> = ({
   buyerName,
   negativeRating,
   postiveRating,
+  openModal,
 }) => {
   return (
     <div className="mt-3">
       <div className="d-flex">
         <div style={{ marginRight: "30%", marginLeft: "10px" }}>
-          <Button color="danger" className="btn-circle">
+          <Button color="danger" className="btn-circle" onClick={openModal}>
             <FaTrashAlt />
           </Button>
         </div>
