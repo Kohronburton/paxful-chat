@@ -8,6 +8,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 import "./header.styles.css";
 
 const Header: React.FC = () => {
@@ -22,27 +23,19 @@ const Header: React.FC = () => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink href="/components/">Buy bitcoins</NavLink>
+            <NavLink href="/">Buy bitcoins</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="https://github.com/reactstrap/reactstrap">
-              Sell bitcoins
-            </NavLink>
+            <NavLink href="/">Sell bitcoins</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="https://github.com/reactstrap/reactstrap">
-              Wallet
-            </NavLink>
+            <NavLink href="/">Wallet</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="https://github.com/reactstrap/reactstrap">
-              Support
-            </NavLink>
+            <NavLink href="/">Support</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="https://github.com/reactstrap/reactstrap">
-              Your account
-            </NavLink>
+            <NavLink href="/">Your account</NavLink>
           </NavItem>
         </Nav>
       </Collapse>
