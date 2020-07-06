@@ -12,7 +12,11 @@ const App: React.FC = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={TradesPage}>
-          {previousRoute && <Redirect exact to={`/trades/${previousRoute}`} />}
+          {previousRoute ? (
+            <Redirect exact to={`/trades/${previousRoute}`} />
+          ) : (
+            <TradesPage />
+          )}
         </Route>
         <Route exact path="/trades/:id" component={TradesPage} />
       </Switch>
