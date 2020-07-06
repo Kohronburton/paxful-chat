@@ -69,6 +69,7 @@ const SingleTrade: React.FC<Props> = ({
     if (isNewMessage) {
       readMessage(index);
     }
+    localStorage.setItem("currentRoute", id.toString());
   };
 
   return (
