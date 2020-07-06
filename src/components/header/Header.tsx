@@ -8,7 +8,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+
 import "./header.styles.css";
 
 const Header: React.FC = () => {

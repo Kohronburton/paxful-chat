@@ -18,7 +18,7 @@ const App: React.FC = () => {
             <TradesPage />
           )}
         </Route>
-        <Route exact path="/trades/:id" component={TradesPage} />
+        <Route path="/trades/:id" component={TradesPage} />
       </Switch>
     </div>
   );
