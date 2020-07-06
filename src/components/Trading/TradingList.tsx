@@ -34,7 +34,9 @@ const TradingList: React.FC<Props> = ({ changeSelectedTrade, tradeId }) => {
           ))}
         </Col>
       ) : (
-        <h3 className="container mt-5">Sorry you don't have trade currently</h3>
+        <h3 className="container mt-5">
+          Sorry you don't have any trade currently
+        </h3>
       )}
     </>
   );

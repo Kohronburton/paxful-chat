@@ -52,11 +52,11 @@ const tradesReducer = (
       };
 
     case SET_MESSAGE_TO_READ:
-      const editData = [...state.data];
-      editData[action.payload].isNewMessage = false;
+      const newData = [...state.data];
+      newData[action.payload].isNewMessage = false;
       return {
         ...state,
-        data: editData,
+        data: newData,
       };
 
     default:
